@@ -1,4 +1,5 @@
 import React from 'react';
+import classNames from 'classnames';
 
 type Props = {
   search: string;
@@ -29,7 +30,11 @@ export const TodoFilter: React.FC<Props> = ({
         </span>
       </p>
 
-      <p className="control is-expanded has-icons-left has-icons-right">
+      <p
+        className={classNames('control', 'is-expanded', 'has-icons-left', {
+          'has-icons-right': Boolean(search),
+        })}
+      >
         <input
           data-cy="searchInput"
           type="text"

@@ -40,6 +40,10 @@ export const App: React.FC = () => {
     });
   }, [todos, search, status]);
 
+  const handleSelectTodo = (todo: Todo) => {
+    setSelectedTodo(prev => (prev?.id === todo.id ? null : todo));
+  };
+
   return (
     <>
       <div className="section">
@@ -62,7 +66,7 @@ export const App: React.FC = () => {
               ) : (
                 <TodoList
                   todos={visibleTodos}
-                  onSelectTodo={setSelectedTodo}
+                  onSelectTodo={handleSelectTodo}
                   selectedTodoId={selectedTodo?.id}
                 />
               )}
